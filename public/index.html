@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body ng-controller="AppCtrl as app">
+
+<h2>Cadastrar Produtos</h2>
+
+<form action="">
+
+</form>
+
+<label for="">Nome</label><input type="text" ng-model="app.newProduct.name" />
+<label for="">Descrição</label><input type="text" ng-model="app.newProduct.description"/>
+<button ng-click="app.saveProduct(app.newProduct)">Adicinar</button>
+
+<h2>Lista de Produtos</h2>
+
+<span class="alert alert-danger" ng-hide="app.products">Carregando...</span>
+
+<table class="table table-bordered table-condesed" ng-show="app.products">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Opções</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="product in app.products">
+        <td>{{ product._id }}</td>
+        <td> <span ng-bind="product.name" ng-show="!product.edit"></span> <input type="text" ng-model="product.name" ng-show="product.edit"/>  </td>
+        <td> <span ng-bind="product.description" ng-show="!product.edit"></span> <input type="text" ng-model="product.description" ng-show="product.edit"/> </td>
+        <td>
+            <a class="btn btn-warning" ng-click="app.editProduct(product)">Editar</a>
+            <a class="btn btn-danger" ng-click="app.deleteProduct(product)">Deletar</a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<script src="lib/angular/angular.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
