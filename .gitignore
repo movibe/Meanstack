@@ -1,3 +1,8 @@
 # Created by .gitignore support plugin (hsz.mobi)
+
+# Node Modules
 node_modules
+# Webstorm
 .idea
+# Bower
+public/lib
